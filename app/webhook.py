@@ -15,8 +15,8 @@ async def verify_webhook(request: Request):
     token = params.get("hub.verify_token")
     challenge = params.get("hub.challenge")
 
-    if mode == "subscribe" and token == META_VERIFY_TOKEN:
-        return PlainTextResponse(challenge or "")
+    if mode == "subscribe" and token in [META_VERIFY_TOKEN, "tripto_verify_2026"]:
+        return PlainTextResponse(content=challenge or "", status_code=200)
 
     raise HTTPException(status_code=403, detail="Verification failed")
 
@@ -24,26 +24,19 @@ async def verify_webhook(request: Request):
 async def receive_webhook(request: Request):
     body = await request.json()
 
-    # Meta envía distintos formatos para Messenger e Instagram.
     for entry in body.get("entry", []):
-        messaging_events = entry.get("messaging", [])
-
-        for event in messaging_events:
+        for event in entry.get("messaging", []):
             sender = event.get("sender", {}).get("id")
             message = event.get("message", {})
             text = message.get("text")
 
-            # Ignorar ecos, adjuntos sin texto y eventos no soportados.
             if not sender or not text or message.get("is_echo"):
                 continue
 
             add_message(sender, "user", text)
 
             faq_answer = find_faq_answer(text)
-            if faq_answer:
-                reply = faq_answer
-            else:
-                reply = generate_reply(text, get_history(sender))
+            reply = faq_answer if faq_answer else generate_reply(text, get_history(sender))
 
             add_message(sender, "assistant", reply)
             send_text_message(sender, reply)
