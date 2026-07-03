@@ -1,0 +1,50 @@
+[
+  {
+    "keywords": [
+      "hola",
+      "buenas",
+      "hello",
+      "hi"
+    ],
+    "answer": "¡Hola! Soy el asistente de Tripto. ¿Tu consulta es sobre pagos internacionales para un hotel, agencia, restaurante, guía u operador turístico?"
+  },
+  {
+    "keywords": [
+      "qué es tripto",
+      "que es tripto",
+      "cómo funciona tripto",
+      "como funciona tripto"
+    ],
+    "answer": "Tripto ayuda a negocios turísticos a recibir pagos internacionales de forma simple y segura. Podemos orientarte según tu tipo de negocio: hotel, agencia, restaurante, guía u operador turístico."
+  },
+  {
+    "keywords": [
+      "liquidación",
+      "liquidacion",
+      "cuánto tarda",
+      "cuanto tarda",
+      "48 horas"
+    ],
+    "answer": "La liquidación se realiza a partir de dos días hábiles, según el caso operativo. Si me indicas qué tipo de negocio tienes, puedo orientarte mejor."
+  },
+  {
+    "keywords": [
+      "comisión",
+      "comision",
+      "tarifa",
+      "costo",
+      "precio"
+    ],
+    "answer": "La comisión puede variar según el tipo de negocio y el volumen de operación. Para darte una orientación más precisa, ¿qué tipo de negocio turístico tienes y en qué ciudad estás?"
+  },
+  {
+    "keywords": [
+      "asesor",
+      "humano",
+      "contacto",
+      "llamada",
+      "demo"
+    ],
+    "answer": "Claro. Puedo derivarte con un asesor de Tripto. Por favor envíame tu nombre, tipo de negocio, ciudad y un correo o WhatsApp de contacto."
+  }
+]
